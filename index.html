@@ -3,43 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扬州熠烁工艺品有限公司 - 树脂艺术专家</title>
+    <title>扬州熠烁工艺品有限公司</title>
     <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;700&display=swap" rel="stylesheet">
     <style>
+        /* --- 全局样式 --- */
         :root {
-            --gold: #c5a059;
-            --dark-bg: #1a1a1a;
-            --text-gray: #888;
+            --gold: #c5a059; /* 高级金 */
+            --dark-gold: #a67f3a;
             --white: #ffffff;
+            --text-on-dark: #eee;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* 平滑滚动 */
         }
 
         body {
-            font-family: 'Noto Serif SC', serif;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Noto Serif SC', serif; /* 高级感衬线体 */
+            background-color: #2a2a2a; /* 背景基色 */
+            /* 全页面统一背景，请替换为您喜欢的高级纹理图 */
+            background-image: url('https://images.unsplash.com/photo-1599676881938-1a520337f769?q=80&w=2500'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 固定背景 */
+            color: #ccc;
+            overflow-x: hidden;
         }
 
-        /* 导航栏 */
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+
+        /* --- 导航栏 --- */
         header {
             position: fixed;
             top: 0;
             width: 100%;
+            height: 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            padding: 0 50px;
+            background: rgba(0, 0, 0, 0.85); /* 毛玻璃效果基础 */
+            backdrop-filter: blur(10px); /* 毛玻璃 */
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .logo-area {
@@ -49,152 +58,195 @@
         }
 
         .company-name {
-            font-family: 'Ma Shan Zheng', cursive;
-            font-size: 28px;
+            font-family: 'Ma Shan Zheng', cursive; /* 个性书法字体 */
+            font-size: 32px;
             color: var(--gold);
-            text-decoration: none;
         }
 
         .logo-img {
-            height: 40px;
+            height: 45px;
             border-radius: 4px;
         }
 
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
         nav a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 30px;
+            font-size: 16px;
             font-weight: 500;
-            transition: color 0.3s;
-            font-size: 15px;
         }
 
         nav a:hover {
             color: var(--gold);
         }
 
-        /* 幻灯片区域 */
+         /* --- 幻灯片区域 (Hero) --- */
         .hero {
-            height: 70vh;
-            margin-top: 80px;
+            height: 60vh;
+            margin-top: 80px; /* 导航栏高度 */
             position: relative;
             overflow: hidden;
-            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .slide {
+        .slideshow-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        .mySlides {
             width: 100%;
             height: 100%;
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: zoom 10s infinite alternate;
+            display: none; /* 初始隐藏 */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
-        @keyframes zoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
+        /* 这里替换您的幻灯片图片文件路径 (图2, 图3, 图4) */
+        .mySlides:nth-child(1) { background-image: url('slide1.jpg'); }
+        .mySlides:nth-child(2) { background-image: url('slide2.jpg'); }
+        .mySlides:nth-child(3) { background-image: url('slide3.jpg'); }
 
-        .hero-overlay {
+        .slide-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); /* 遮罩层 */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: white;
             text-align: center;
+            color: var(--white);
+            z-index: 1;
         }
 
         .hero-slogan {
-            font-size: 3rem;
-            letter-spacing: 8px;
+            font-size: 3.5rem;
+            letter-spacing: 12px;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
         }
 
-        /* 公司理念 */
-        .philosophy {
-            padding: 100px 20px;
+        /* 幻灯片控制按钮 */
+        .dot-container {
+            position: absolute;
+            bottom: 20px;
+            z-index: 2;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: var(--gold);
+        }
+
+        /* --- 公共部分样式 --- */
+        section {
+            padding: 100px 50px;
+            position: relative;
+        }
+
+        .section-header {
             text-align: center;
-            background: white;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-size: 24px;
+            font-size: 28px;
             color: var(--gold);
-            margin-bottom: 30px;
             position: relative;
             display: inline-block;
         }
 
         .section-title::after {
             content: "";
-            width: 50px;
+            width: 60px;
             height: 2px;
             background: var(--gold);
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
         }
 
+        /* --- 公司理念 --- */
+        .philosophy {
+            background: rgba(255, 255, 255, 0.03); /* 半透明层，提升易读性 */
+            backdrop-filter: blur(5px);
+        }
+
         .philosophy-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            font-size: 18px;
-            color: #666;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-on-dark);
+            line-height: 2;
             font-style: italic;
         }
 
-        /* 产品中心 */
+        /* --- 产品中心 --- */
         .products {
-            padding: 80px 50px;
-            background: #f4f4f4;
+            background: rgba(0, 0, 0, 0.7);
         }
 
         .category-title {
-            margin: 40px 0 20px;
-            border-left: 4px solid var(--gold);
-            padding-left: 15px;
             font-size: 20px;
+            margin: 40px 0 20px;
+            border-left: 5px solid var(--gold);
+            padding-left: 15px;
+            color: var(--gold);
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
 
         .product-card {
-            background: white;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 8px;
             overflow: hidden;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            border-color: var(--gold);
         }
 
-        .product-img {
+        .product-img-holder {
             width: 100%;
             height: 250px;
-            background: #eee;
+            background: rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ccc;
+            color: #666;
+            font-size: 14px;
         }
 
         .product-info {
@@ -202,20 +254,28 @@
             text-align: center;
         }
 
+        .product-name {
+            font-size: 16px;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        /* 产品中心文案条 */
         .product-slogan-bar {
-            background: var(--dark-bg);
-            color: var(--gold);
+            background: var(--gold);
+            color: #000;
             padding: 15px;
             text-align: center;
             font-size: 20px;
-            letter-spacing: 4px;
-            margin: 40px 0;
+            font-weight: 700;
+            letter-spacing: 5px;
+            margin-bottom: 50px;
+            border-radius: 4px;
         }
 
-        /* 联系我们 */
+        /* --- 联系我们 (页脚前部分) --- */
         .contact {
-            padding: 80px 50px;
-            background: white;
+            background: rgba(255,255,255,0.03);
             display: flex;
             flex-wrap: wrap;
             gap: 50px;
@@ -224,42 +284,51 @@
 
         .contact-info {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             max-width: 500px;
         }
 
         .contact-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             font-size: 16px;
+            display: flex;
+            align-items: center;
         }
 
-        .contact-item b {
+        .contact-icon {
             color: var(--gold);
-            display: inline-block;
-            width: 80px;
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
         }
+
+        .contact-label { color: #888; margin-right: 10px;}
 
         .footer-slogan {
-            font-size: 28px;
-            color: #333;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            font-size: 2.5rem;
+            color: var(--white);
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            letter-spacing: 10px;
         }
 
+        /* --- 页脚 --- */
         footer {
-            background: var(--dark-bg);
-            color: #666;
+            background: #111;
+            color: #555;
             text-align: center;
-            padding: 30px;
-            font-size: 14px;
+            padding: 25px;
+            font-size: 13px;
         }
 
-        /* 响应式调整 */
+        /* --- 响应式调整 --- */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .hero-slogan { font-size: 1.8rem; }
-            nav a { margin-left: 15px; font-size: 13px; }
+            header { padding: 0 20px; }
+            .hero-slogan { font-size: 2rem; letter-spacing: 6px;}
+            section { padding: 60px 20px; }
+            .footer-slogan { font-size: 1.8rem; letter-spacing: 5px; }
+            nav a { font-size: 14px; }
         }
     </style>
 </head>
@@ -267,69 +336,97 @@
 
     <header>
         <div class="logo-area">
-            <a href=" " class="company-name">扬州熠烁工艺品有限公司</a >
-            <div style="background: #eee; padding: 5px 10px; font-size: 12px; color: #999; border: 1px dashed #ccc;">图1位置</div>
+            <a href=" " class="company-name">扬州熠烁</a >
+            < img src="logo.png" alt="Yishuo Logo" class="logo-img"> 
         </div>
         <nav>
-            <a href="#home">首页</a >
-            <a href="#products">产品中心</a >
-            <a href="#contact">联系我们</a >
+            <ul>
+                <li><a href="#home">首页</a ></li>
+                <li><a href="#products">产品中心</a ></li>
+                <li><a href="#contact">联系我们</a ></li>
+            </ul>
         </nav>
     </header>
 
     <section class="hero" id="home">
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=1920');">
-            <div class="hero-overlay">
+        <div class="slideshow-container">
+            <div class="mySlides fade"></div>
+            <div class="mySlides fade"></div>
+            <div class="mySlides fade"></div>
+
+            <div class="slide-overlay">
                 <h1 class="hero-slogan">熠耀宏图，创新致远开新局</h1>
-                <p>匠心雕琢 · 艺术之美</p >
+                <p style="font-size: 1.2rem; font-style: italic; opacity: 0.8;">匠心雕琢 · 艺术之美</p >
             </div>
+        </div>
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
         </div>
     </section>
 
     <section class="philosophy">
-        <h2 class="section-title">公司理念</h2>
+        <div class="section-header">
+            <h2 class="section-title">公司理念</h2>
+        </div>
         <div class="philosophy-content">
-            <p>我们专注于POLY（树脂）艺术的深度探索，将传统工艺与现代审美融合。</p >
-            <p>致力于提供从产品开发、设计到制造的一站式服务，让每一件工艺品都成为空间的灵魂。</p >
+            <p>我们专注于POLY（树脂）工艺美术产品的深度开发与设计，将传统手工艺与现代审美融合。</p >
+            <p>致力于生产制造高品质的树脂摆件，并创新性地开发与玻璃、陶瓷、木器等材质相结合的复合美术工艺品。</p >
+            <p>以匠心致初心，以品质立市场，让艺术走进千家万户。</p >
         </div>
     </section>
 
     <section class="products" id="products">
-        <h2 class="section-title">产品中心</h2>
-        
+        <div class="section-header">
+            <h2 class="section-title">产品中心</h2>
+        </div>
+
         <div class="product-slogan-bar">
             烁金品质，守信以诚立市场
         </div>
-
-        <h3 class="category-title">POLY（树脂）工艺美术品</h3>
+        
+        <h3 class="category-title">POLY（树脂）工艺美术</h3>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>树脂雕塑摆件 - A系列</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">树脂天使摆件 (示例)</h4>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>艺术人像开发 - B系列</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">树脂动物雕塑 (示例)</h4>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>现代抽象树脂 - C系列</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">现代抽象树脂 (示例)</h4>
+                </div>
             </div>
         </div>
 
-        <h3 class="category-title">POLY 结合系列（玻璃、陶瓷、木器）</h3>
+        <h3 class="category-title">POLY 结合系列（玻璃/陶瓷/木器）</h3>
         <div class="product-grid">
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>树脂与陶瓷结合花瓶</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">树脂与玻璃融合花瓶 (示例)</h4>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>树脂嵌木工艺底座</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">树脂嵌木工艺底座 (示例)</h4>
+                </div>
             </div>
             <div class="product-card">
-                <div class="product-img">产品图预留</div>
-                <div class="product-info"><h4>玻璃艺术融合系列</h4></div>
+                <div class="product-img-holder"><span>产品图预留</span></div>
+                <div class="product-info">
+                    <h4 class="product-name">树脂陶瓷组合摆件 (示例)</h4>
+                </div>
             </div>
         </div>
     </section>
@@ -337,12 +434,24 @@
     <section class="contact" id="contact">
         <div class="contact-info">
             <h2 class="footer-slogan">百业腾达</h2>
-            <div class="contact-item"><b>电话：</b>15952524608</div>
-            <div class="contact-item"><b>QQ：</b>362164015</div>
-            <div class="contact-item"><b>Email：</b>yystudio2006@126.com</div>
-            <div class="contact-item"><b>业务：</b>树脂工艺品开发设计、生产制造与销售</div>
+            <div class="contact-item">
+                <span class="contact-icon">&#128100;</span>
+                <span class="contact-label">联系我们：</span>扬州熠烁工艺品有限公司
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">&#9742;</span>
+                <span class="contact-label">电话：</span>15952524608
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">&#128172;</span>
+                <span class="contact-label">QQ：</span>362164015
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">&#9993;</span>
+                <span class="contact-label">Email：</span>yystudio2006@126.com
+            </div>
         </div>
-        <div style="flex: 1; min-width: 300px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999;">
+        <div style="flex: 1; min-width: 300px; background: rgba(255,255,255,0.02); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #555; border: 1px dashed #444;">
             [ 此处可放置公司地图或办公环境图 ]
         </div>
     </section>
@@ -352,15 +461,55 @@
     </footer>
 
     <script>
-        // 简单的平滑滚动增强
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                slides[i].style.opacity = "0";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(() => { // 延迟一下，让display变为block后再改变opacity
+                slides[slideIndex-1].style.opacity = "1";
+            }, 10);
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000); // 每5秒切换一次
+        }
+
+        // 手动点击指示点切换
+        function currentSlide(n) {
+            slideIndex = n - 1; // 调整索引
+            showSlidesManual();
+        }
+
+        function showSlidesManual() {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (slideIndex >= slides.length) {slideIndex = 0}
+            if (slideIndex < 0) {slideIndex = slides.length - 1}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                slides[i].style.opacity = "0";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex].style.display = "block";  
+            setTimeout(() => {
+                slides[slideIndex].style.opacity = "1";
+            }, 10);
+            dots[slideIndex].className += " active";
+        }
     </script>
 </body>
 </html>
