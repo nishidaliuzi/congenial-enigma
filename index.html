@@ -3,102 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>扬州熠烁工艺品有限公司 - 匠心工艺，闪耀生活</title>
+    <title>扬州熠烁工艺品有限公司 - 树脂艺术专家</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;700&display=swap" rel="stylesheet">
     <style>
-        /* 基础样式复位 */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif; color: #333; line-height: 1.6; background-color: #f9f9f9; }
+        :root {
+            --gold: #c5a059;
+            --dark-bg: #1a1a1a;
+            --text-gray: #888;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
 
         /* 导航栏 */
-        nav { background: #1a1a1a; color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #d4af37; }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
 
-        /* 英雄横幅区 */
-        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80&w=1200') center/cover; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; padding: 0 20px; }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.2rem; color: #e0e0e0; max-width: 600px; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-        /* 公司简介 */
-        .section { padding: 60px 10%; text-align: center; }
-        .section h2 { font-size: 2rem; margin-bottom: 30px; position: relative; padding-bottom: 10px; }
-        .section h2::after { content: ''; width: 50px; height: 3px; background: #d4af37; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .company-name {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 28px;
+            color: var(--gold);
+            text-decoration: none;
+        }
 
-        /* 产品展示网格 */
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
-        .product-card { background: #fff; border: 1px solid #eee; transition: transform 0.3s; overflow: hidden; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        .product-card img { width: 100%; height: 250px; object-fit: cover; display: block; }
-        
-        .product-info { padding: 20px; text-align: left; }
-        .product-info h3 { margin-bottom: 10px; color: #1a1a1a; }
-        .product-info p { font-size: 0.9rem; color: #666; }
+        .logo-img {
+            height: 40px;
+            border-radius: 4px;
+        }
 
-        /* 页脚 */
-        footer { background: #1a1a1a; color: #888; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
-        .contact-info { margin-bottom: 20px; color: #ccc; }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* 幻灯片区域 */
+        .hero {
+            height: 70vh;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: zoom 10s infinite alternate;
+        }
+
+        @keyframes zoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-slogan {
+            font-size: 3rem;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* 公司理念 */
+        .philosophy {
+            padding: 100px 20px;
+            text-align: center;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .philosophy-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 18px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 产品中心 */
+        .products {
+            padding: 80px 50px;
+            background: #f4f4f4;
+        }
+
+        .category-title {
+            margin: 40px 0 20px;
+            border-left: 4px solid var(--gold);
+            padding-left: 15px;
+            font-size: 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+        }
+
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-slogan-bar {
+            background: var(--dark-bg);
+            color: var(--gold);
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 4px;
+            margin: 40px 0;
+        }
+
+        /* 联系我们 */
+        .contact {
+            padding: 80px 50px;
+            background: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            justify-content: center;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+
+        .contact-item {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .contact-item b {
+            color: var(--gold);
+            display: inline-block;
+            width: 80px;
+        }
+
+        .footer-slogan {
+            font-size: 28px;
+            color: #333;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: #666;
+            text-align: center;
+            padding: 30px;
+            font-size: 14px;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            .hero-slogan { font-size: 1.8rem; }
+            nav a { margin-left: 15px; font-size: 13px; }
+        }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">扬州熠烁工艺品</div>
-        <div>首页 | 产品中心 | 关于我们 | 联系我们</div>
-    </nav>
-
-    <header class="hero">
-        <h1>匠心雕琢 · 熠熠生辉</h1>
-        <p>扬州熠烁工艺品有限公司，致力于将传统美学与现代工艺完美结合，为您打造独一无二的工艺精品。</p >
+    <header>
+        <div class="logo-area">
+            <a href=" " class="company-name">扬州熠烁工艺品有限公司</a >
+            <div style="background: #eee; padding: 5px 10px; font-size: 12px; color: #999; border: 1px dashed #ccc;">图1位置</div>
+        </div>
+        <nav>
+            <a href="#home">首页</a >
+            <a href="#products">产品中心</a >
+            <a href="#contact">联系我们</a >
+        </nav>
     </header>
 
-    <section class="section">
-        <h2>公司简介</h2>
-        <p style="max-width: 800px; margin: 0 auto;">
-            坐落于历史文化名城扬州，熠烁工艺品有限公司是一家集设计、研发、生产于一体的专业工艺品制造企业。
-            我们专注于精细化、高品质的艺术品制作，涵盖礼品定制、家居装饰及文化创意产品，
-            以卓越的品质和独特的艺术视角，让每一件作品都成为时光的收藏。
-        </p >
+    <section class="hero" id="home">
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=1920');">
+            <div class="hero-overlay">
+                <h1 class="hero-slogan">熠耀宏图，创新致远开新局</h1>
+                <p>匠心雕琢 · 艺术之美</p >
+            </div>
+        </div>
     </section>
 
-    <section class="section" style="background: #fff;">
-        <h2>精选产品展示</h2>
-        <p>（已为您嵌入产品图片，可直接部署）</p >
+    <section class="philosophy">
+        <h2 class="section-title">公司理念</h2>
+        <div class="philosophy-content">
+            <p>我们专注于POLY（树脂）艺术的深度探索，将传统工艺与现代审美融合。</p >
+            <p>致力于提供从产品开发、设计到制造的一站式服务，让每一件工艺品都成为空间的灵魂。</p >
+        </div>
+    </section>
+
+    <section class="products" id="products">
+        <h2 class="section-title">产品中心</h2>
         
+        <div class="product-slogan-bar">
+            烁金品质，守信以诚立市场
+        </div>
+
+        <h3 class="category-title">POLY（树脂）工艺美术品</h3>
         <div class="product-grid">
             <div class="product-card">
-                <!-- 正确路径：和仓库根目录的图片完全匹配 -->
-                < img src="微信图片_20260415112936_47_269.jpg" alt="扬州熠烁工艺品产品1">
-                <div class="product-info">
-                    <h3>系列名称一</h3>
-                    <p>这里描述产品的材质、设计灵感或用途。例如：纯手工雕刻，展现东方韵味。</p >
-                </div>
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>树脂雕塑摆件 - A系列</h4></div>
             </div>
-
             <div class="product-card">
-                < img src="https://via.placeholder.com/400x300?text=产品图片2" alt="产品2">
-                <div class="product-info">
-                    <h3>系列名称二</h3>
-                    <p>高端商务定制礼品，不仅是工艺品，更是文化的传承与表达。</p >
-                </div>
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>艺术人像开发 - B系列</h4></div>
             </div>
-
             <div class="product-card">
-                < img src="https://via.placeholder.com/400x300?text=产品图片3" alt="产品3">
-                <div class="product-info">
-                    <h3>系列名称三</h3>
-                    <p>现代简约风格系列，适配多种空间装点，提升生活美学格调。</p >
-                </div>
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>现代抽象树脂 - C系列</h4></div>
             </div>
+        </div>
+
+        <h3 class="category-title">POLY 结合系列（玻璃、陶瓷、木器）</h3>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>树脂与陶瓷结合花瓶</h4></div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>树脂嵌木工艺底座</h4></div>
+            </div>
+            <div class="product-card">
+                <div class="product-img">产品图预留</div>
+                <div class="product-info"><h4>玻璃艺术融合系列</h4></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-info">
+            <h2 class="footer-slogan">百业腾达</h2>
+            <div class="contact-item"><b>电话：</b>15952524608</div>
+            <div class="contact-item"><b>QQ：</b>362164015</div>
+            <div class="contact-item"><b>Email：</b>yystudio2006@126.com</div>
+            <div class="contact-item"><b>业务：</b>树脂工艺品开发设计、生产制造与销售</div>
+        </div>
+        <div style="flex: 1; min-width: 300px; background: #f0f0f0; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #999;">
+            [ 此处可放置公司地图或办公环境图 ]
         </div>
     </section>
 
     <footer>
-        <div class="contact-info">
-            <p>联系电话：[请输入电话] | 企业邮箱：[请输入邮箱]</p >
-            <p>公司地址：江苏省扬州市[请输入具体地址]</p >
-        </div>
-        <p>&copy; 2026 扬州熠烁工艺品有限公司 版权所有</p >
+        <p>&copy; 2023 扬州熠烁工艺品有限公司 版权所有</p >
     </footer>
 
+    <script>
+        // 简单的平滑滚动增强
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
