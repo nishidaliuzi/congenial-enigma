@@ -1,155 +1,104 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>扬州熠烁工艺品有限公司 - 匠心工艺 品质传承</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
-body{background:#f7f7f7;color:#333;line-height:1.7;}
-.container{max-width:1200px;margin:0 auto;padding:0 20px;}
-header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.05);padding:20px 0;position:sticky;top:0;z-index:100;}
-.header-wrap{display:flex;justify-content:space-between;align-items:center;}
-.logo{font-size:22px;font-weight:bold;color:#c4944a;}
-nav a{margin-left:30px;text-decoration:none;color:#333;font-weight:500;}
-nav a:hover{color:#c4944a;}
-.banner{height:400px;background:linear-gradient(to right,#2c2c2c,#444);color:#fff;display:flex;align-items:center;justify-content:center;position:relative;}
-.banner::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:#eee;opacity:0.1;}
-.banner-content{position:relative;z-index:2;text-align:center;}
-.banner h1{font-size:42px;margin-bottom:15px;}
-.banner p{font-size:18px;max-width:700px;margin:0 auto;}
-.main{display:flex;gap:30px;margin:60px 0;}
-.left{flex:1;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
-.center{flex:2;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
-.right{flex:1;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
-.title{font-size:22px;margin-bottom:20px;color:#c4944a;padding-bottom:10px;border-bottom:2px solid #eee;}
-.intro img{width:100%;height:200px;background:#eee;margin-bottom:15px;border-radius:6px;}
-.intro p{margin-bottom:12px;text-align:justify;}
-.video-box{width:100%;height:200px;background:#eee;margin-top:15px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#666;}
-.product-cate{list-style:none;margin-bottom:20px;}
-.product-cate li{padding:10px 14px;background:#f7f7f7;margin-bottom:8px;border-radius:6px;}
-.product-cate li:hover{background:#c4944a;color:#fff;}
-.product-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-.product-item{border-radius:8px;overflow:hidden;background:#fafafa;}
-.product-item img{width:100%;height:180px;background:#eee;}
-.product-info{padding:15px;}
-.product-name{font-weight:bold;margin-bottom:6px;}
-.product-desc{font-size:14px;color:#666;}
-.contact-item{margin-bottom:16px;display:flex;align-items:center;}
-.contact-item strong{width:70px;}
-.qrcode{width:140px;height:140px;background:#eee;margin:20px auto 0;border-radius:6px;}
-footer{background:#333;color:#fff;text-align:center;padding:30px 0;margin-top:40px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扬州熠烁工艺品有限公司 - 匠心工艺，闪耀生活</title>
+    <style>
+        /* 基础样式复位 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', sans-serif; color: #333; line-height: 1.6; background-color: #f9f9f9; }
+
+        /* 导航栏 */
+        nav { background: #1a1a1a; color: #fff; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; color: #d4af37; }
+
+        /* 英雄横幅区 */
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80&w=1200') center/cover; height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; padding: 0 20px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; color: #e0e0e0; max-width: 600px; }
+
+        /* 公司简介 */
+        .section { padding: 60px 10%; text-align: center; }
+        .section h2 { font-size: 2rem; margin-bottom: 30px; position: relative; padding-bottom: 10px; }
+        .section h2::after { content: ''; width: 50px; height: 3px; background: #d4af37; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* 产品展示网格 - 预留位置 */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .product-card { background: #fff; border: 1px solid #eee; transition: transform 0.3s; overflow: hidden; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* 占位图样式 */
+        .placeholder-img { width: 100%; height: 250px; background: #e0e0e0; display: flex; align-items: center; justify-content: center; color: #888; font-size: 0.9rem; border-bottom: 1px solid #eee; }
+        
+        .product-info { padding: 20px; text-align: left; }
+        .product-info h3 { margin-bottom: 10px; color: #1a1a1a; }
+        .product-info p { font-size: 0.9rem; color: #666; }
+
+        /* 页脚 */
+        footer { background: #1a1a1a; color: #888; padding: 40px 10%; text-align: center; font-size: 0.9rem; }
+        .contact-info { margin-bottom: 20px; color: #ccc; }
+    </style>
 </head>
 <body>
 
-<header>
-<div class="container header-wrap">
-<div class="logo">扬州熠烁工艺品有限公司</div>
-<nav>
-<a href=" ">公司简介</a >
-<a href="#product">产品中心</a >
-<a href="#contact">联系我们</a >
-</nav>
-</div>
-</header>
+    <nav>
+        <div class="logo">扬州熠烁工艺品</div>
+        <div>首页 | 产品中心 | 关于我们 | 联系我们</div>
+    </nav>
 
-<section class="banner">
-<div class="banner-content">
-<h1>扬州熠烁工艺品有限公司</h1>
-<p>专注高品质工艺品设计、生产与销售 匠心工艺 品质传承</p >
-</div>
-</section>
+    <header class="hero">
+        <h1>匠心雕琢 · 熠熠生辉</h1>
+        <p>扬州熠烁工艺品有限公司，致力于将传统美学与现代工艺完美结合，为您打造独一无二的工艺精品。</p >
+    </header>
 
-<main class="container main">
-<!-- 左侧 公司简介 -->
-<div class="left" id="intro">
-<h2 class="title">公司简介</h2>
-<div class="intro">
-< img src="company.jpg" alt="公司照片">
-<p>扬州熠烁工艺品有限公司位于扬州，是一家集设计、生产、销售于一体的专业工艺品企业。</p >
-<p>公司主营文创摆件、家居装饰、香薰工艺品、树脂/石膏工艺品、礼品定制等，产品工艺精细、造型美观，适用于家居、商业、礼品等场景。</p >
-<p>我们坚持品质优先、创新驱动，为客户提供稳定、高性价比的工艺品解决方案。</p >
-<div class="video-box">此处可放企业宣传视频</div>
-</div>
-</div>
+    <section class="section">
+        <h2>公司简介</h2>
+        <p style="max-width: 800px; margin: 0 auto;">
+            坐落于历史文化名城扬州，熠烁工艺品有限公司是一家集设计、研发、生产于一体的专业工艺品制造企业。
+            我们专注于精细化、高品质的艺术品制作，涵盖礼品定制、家居装饰及文化创意产品，
+            以卓越的品质和独特的艺术视角，让每一件作品都成为时光的收藏。
+        </p >
+    </section>
 
-<!-- 中间 产品展示 -->
-<div class="center" id="product">
-<h2 class="title">产品展示</h2>
-<div style="display:flex;gap:20px;">
-<div style="width:200px;">
-<h3 style="margin-bottom:12px;font-size:16px;">产品分类</h3>
-<ul class="product-cate">
-<li>文创摆件系列</li>
-<li>家居装饰工艺品</li>
-<li>香薰石膏工艺品</li>
-<li>树脂工艺品</li>
-<li>礼品定制系列</li>
-</ul>
-</div>
-<div style="flex:1;">
-<div class="product-list">
-<div class="product-item">
-< img src="product1.jpg" alt="产品1">
-<div class="product-info">
-<div class="product-name">工艺品名称1</div>
-<div class="product-desc">材质： 尺寸： 用途：</div>
-</div>
-</div>
-<div class="product-item">
-< img src="product2.jpg" alt="产品2">
-<div class="product-info">
-<div class="product-name">工艺品名称2</div>
-<div class="product-desc">材质： 尺寸： 用途：</div>
-</div>
-</div>
-<div class="product-item">
-< img src="product3.jpg" alt="产品3">
-<div class="product-info">
-<div class="product-name">工艺品名称3</div>
-<div class="product-desc">材质： 尺寸： 用途：</div>
-</div>
-</div>
-<div class="product-item">
-< img src="product4.jpg" alt="产品4">
-<div class="product-info">
-<div class="product-name">工艺品名称4</div>
-<div class="product-desc">材质： 尺寸： 用途：</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <section class="section" style="background: #fff;">
+        <h2>精选产品展示</h2>
+        <p>（请在下方代码处替换您的产品图片链接）</p >
+        
+        <div class="product-grid">
+            <div class="product-card">
+                < img src="https://via.placeholder.com/400x300?text=产品图片上传位置" alt="产品1" style="width:100%; display:block;">
+                <div class="product-info">
+                    <h3>系列名称一</h3>
+                    <p>这里描述产品的材质、设计灵感或用途。例如：纯手工雕刻，展现东方韵味。</p >
+                </div>
+            </div>
 
-<!-- 右侧 联系方式 -->
-<div class="right" id="contact">
-<h2 class="title">联系我们</h2>
-<div class="contact-item">
-<strong>公司：</strong><span>扬州熠烁工艺品有限公司</span>
-</div>
-<div class="contact-item">
-<strong>电话：</strong><span>138XXXX8888</span>
-</div>
-<div class="contact-item">
-<strong>微信：</strong><span>yishuo888</span>
-</div>
-<div class="contact-item">
-<strong>地址：</strong><span>江苏省扬州市</span>
-</div>
-<div class="contact-item">
-<strong>业务：</strong><span>生产、批发、定制、来样加工</span>
-</div>
-< img src="qrcode.jpg" class="qrcode" alt="微信二维码">
-</div>
-</main>
+            <div class="product-card">
+                < img src="https://via.placeholder.com/400x300?text=产品图片上传位置" alt="产品2" style="width:100%; display:block;">
+                <div class="product-info">
+                    <h3>系列名称二</h3>
+                    <p>高端商务定制礼品，不仅是工艺品，更是文化的传承与表达。</p >
+                </div>
+            </div>
 
-<footer>
-<div class="container">
-<p>© 2026 扬州熠烁工艺品有限公司 版权所有</p >
-</div>
-</footer>
+            <div class="product-card">
+                < img src="https://via.placeholder.com/400x300?text=产品图片上传位置" alt="产品3" style="width:100%; display:block;">
+                <div class="product-info">
+                    <h3>系列名称三</h3>
+                    <p>现代简约风格系列，适配多种空间装点，提升生活美学格调。</p >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-info">
+            <p>联系电话：[请输入电话] | 企业邮箱：[请输入邮箱]</p >
+            <p>公司地址：江苏省扬州市[请输入具体地址]</p >
+        </div>
+        <p>&copy; 2026 扬州熠烁工艺品有限公司 版权所有</p >
+    </footer>
 
 </body>
 </html>
